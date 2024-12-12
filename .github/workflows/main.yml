@@ -1,0 +1,29 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "labwork_4" ]
+  pull_request:
+    branches: [ "labwork_4" ]
+
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      
+      - uses: actions/checkout@v4
+
+      - name: python setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: run tests
+        run: | 
+          python -m unittest main.py
