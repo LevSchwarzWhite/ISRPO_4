@@ -36,4 +36,4 @@ jobs:
 
       - name: run tests
         run: | 
-          python.exe-m unittest main.py
+          python -m unittest main.py
